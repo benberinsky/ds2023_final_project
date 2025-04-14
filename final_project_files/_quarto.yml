@@ -12,8 +12,8 @@ book:
   sidebar:
     logo: sidebar picture
     search: true
-  repo-url: url for repo
-  repo-branch: master
+  repo-url: "https://github.com/benberinsky/ds2023_finalproject"
+  repo-branch: main
   image: insert image
 
   chapters:
