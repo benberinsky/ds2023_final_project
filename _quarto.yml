@@ -8,7 +8,7 @@ book:
   favicon: "INSERT ICON FOR REPORT"
   description: SINGLE LINE BELOW TITLE
   keyword: "Keywords for when people are searching for report"
-  url: insert url
+  url: "https://benberinsky.github.io/ds2023_finalproject"
   sidebar:
     logo: sidebar picture
     search: true
