@@ -229,20 +229,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="problem-statement" class="level3" data-number="4.0.1">
 <h3 data-number="4.0.1" class="anchored" data-anchor-id="problem-statement"><span class="header-section-number">4.0.1</span> Problem Statement</h3>
 <p>Over the past decade, UVA has has produced many talented forwards. Some notable names include De’Andre Hunter and Trey Murphy, current impact players in the NBA. These names brought them to multiple NCAA Tournaments and a Championship victory in 2019. However the men’s basketball team has been declining in performance every year since the 22-23 season. Have there been any differences in effort in practices versus games, specifically at the forward position, through metrics such as PlayerLoad (PL), high acceleration, or jump count high band?</p>
-<div id="22f0c2d2" class="cell" data-execution_count="1">
+<div id="ef5e6b09" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="60d5f750" class="cell" data-execution_count="2">
+<div id="ce2ddd4e" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>s1_df <span class="op">=</span> pd.read_csv(<span class="st">"../project/EDA/Data/catapult_s1.csv"</span>)</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>s1_df <span class="op">=</span> pd.DataFrame(s1_df)</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>s2_df <span class="op">=</span> pd.read_csv(<span class="st">"../project/EDA/Data/catapult_s2.csv"</span>)</span>
 <span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>s2_df <span class="op">=</span> pd.DataFrame(s2_df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="dc805c46" class="cell" data-execution_count="3">
+<div id="42603590" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"S1 shape:"</span>, s1_df.shape)</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"S2 shape:"</span>, s2_df.shape)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -250,22 +250,22 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 S2 shape: (13225, 53)</code></pre>
 </div>
 </div>
-<div id="a0644c5a" class="cell" data-execution_count="4">
+<div id="e46fcfa1" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Combining Season 1 and Season 2 dataframes</span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>s1_df[<span class="st">'Season'</span>] <span class="op">=</span> <span class="st">'Season 1'</span></span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>s2_df[<span class="st">'Season'</span>] <span class="op">=</span> <span class="st">'Season 2'</span></span>
 <span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.concat([s1_df, s2_df], ignore_index<span class="op">=</span><span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="238e44a6" class="cell" data-execution_count="5">
+<div id="ea2b22c0" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Combining Season 1 and Season 2 dataframes</span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>s1_df[<span class="st">'Season'</span>] <span class="op">=</span> <span class="st">'Season 1'</span></span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>s2_df[<span class="st">'Season'</span>] <span class="op">=</span> <span class="st">'Season 2'</span></span>
 <span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.concat([s1_df, s2_df], ignore_index<span class="op">=</span><span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="9ffac389" class="cell" data-execution_count="6">
+<div id="23b7581b" class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> df[[<span class="st">'Date'</span>, <span class="st">'Season'</span>, <span class="st">'About'</span>, <span class="st">'Position'</span>, <span class="st">'Period Number'</span>, <span class="st">'Period'</span>, <span class="st">'Total Player Load'</span>, <span class="st">'Player Load Per Minute'</span>, <span class="st">'IMA Accel High'</span>, <span class="st">'IMA Jump Count High Band'</span>, <span class="st">'Session Total Jumps'</span>]]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="9e2dde1c" class="cell" data-execution_count="7">
+<div id="9ee85945" class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">12</span>, <span class="dv">6</span>))</span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>sns.heatmap(df.isnull(), cbar<span class="op">=</span><span class="va">False</span>, cmap<span class="op">=</span><span class="st">"viridis"</span>)</span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"Missing Data Heatmap"</span>)</span>
@@ -280,7 +280,7 @@ S2 shape: (13225, 53)</code></pre>
 </div>
 </div>
 <p>Session total jump is supposed to have missing values because it refers to the total number of jumps each player has in all periods at each date.</p>
-<div id="7a7a9f1f" class="cell" data-execution_count="8">
+<div id="35fed592" class="cell" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Check data types</span></span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(df.dtypes)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -298,33 +298,33 @@ Session Total Jumps         float64
 dtype: object</code></pre>
 </div>
 </div>
-<div id="8a69efaa" class="cell" data-execution_count="9">
+<div id="2061e381" class="cell" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert Date to datetime</span></span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="co"># df['Date'] = pd.to_datetime(df['Date'], format='%m/%d/%y')</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="931d38e6" class="cell" data-execution_count="10">
+<div id="afde4963" class="cell" data-execution_count="10">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>df.shape</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="10">
 <pre><code>(29442, 11)</code></pre>
 </div>
 </div>
-<div id="9aef504c" class="cell" data-execution_count="11">
+<div id="f7c1d9ad" class="cell" data-execution_count="11">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Remove duplicates</span></span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> df.drop_duplicates()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="1cdfcb0a" class="cell" data-execution_count="12">
+<div id="4983f7c1" class="cell" data-execution_count="12">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>df.shape</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="12">
 <pre><code>(29401, 11)</code></pre>
 </div>
 </div>
-<div id="45f5eed1" class="cell" data-execution_count="13">
+<div id="c6fd3de6" class="cell" data-execution_count="13">
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Splitting up so we can look at positional differences</span></span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>forward_df <span class="op">=</span> df[df[<span class="st">'Position'</span>] <span class="op">==</span> <span class="st">'Forward'</span>]</span>
 <span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>guard_df <span class="op">=</span> df[df[<span class="st">'Position'</span>] <span class="op">==</span> <span class="st">'Guard'</span>]</span>
 <span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>center_df <span class="op">=</span> df[df[<span class="st">'Position'</span>] <span class="op">==</span> <span class="st">'Center'</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="11b6245f" class="cell" data-execution_count="14">
+<div id="525c4add" class="cell" data-execution_count="14">
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>mask <span class="op">=</span> df[<span class="st">'Period'</span>].<span class="bu">str</span>.contains(<span class="vs">r'\bperiod\b\s*\d*'</span>, case<span class="op">=</span><span class="va">False</span>, na<span class="op">=</span><span class="va">False</span>)</span>
 <span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>games_df <span class="op">=</span> df[mask]</span>
 <span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>practice_df <span class="op">=</span> df[<span class="op">~</span>mask]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -332,11 +332,11 @@ dtype: object</code></pre>
 </section>
 <section id="descriptive-statistics-distributions" class="level3" data-number="4.0.2">
 <h3 data-number="4.0.2" class="anchored" data-anchor-id="descriptive-statistics-distributions"><span class="header-section-number">4.0.2</span> Descriptive Statistics &amp; Distributions</h3>
-<div id="3df0dd97" class="cell" data-execution_count="15">
+<div id="a484a8b9" class="cell" data-execution_count="15">
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Pulling out key numeric variables</span></span>
 <span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>vars_list <span class="op">=</span> [<span class="st">'Total Player Load'</span>, <span class="st">'Player Load Per Minute'</span>, <span class="st">'IMA Accel High'</span>, <span class="st">'IMA Jump Count High Band'</span>, <span class="st">'Session Total Jumps'</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="880c9470" class="cell" data-execution_count="16">
+<div id="eb3aa8bd" class="cell" data-execution_count="16">
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>forward_df.describe(include<span class="op">=</span>[<span class="bu">int</span>, <span class="bu">float</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="16">
 <div>
@@ -433,7 +433,7 @@ dtype: object</code></pre>
 </div>
 </div>
 </div>
-<div id="7f61cfc3" class="cell" data-execution_count="17">
+<div id="34424490" class="cell" data-execution_count="17">
 <div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>center_df.describe(include<span class="op">=</span>[<span class="bu">int</span>, <span class="bu">float</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="17">
 <div>
@@ -530,7 +530,7 @@ dtype: object</code></pre>
 </div>
 </div>
 </div>
-<div id="3dcb54cc" class="cell" data-execution_count="18">
+<div id="45104ac8" class="cell" data-execution_count="18">
 <div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>guard_df.describe(include<span class="op">=</span>[<span class="bu">int</span>, <span class="bu">float</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="18">
 <div>
@@ -628,7 +628,7 @@ dtype: object</code></pre>
 </div>
 </div>
 <p>Mean total player load is highest for forwards, but they also have more variance. It seems that centers have more high band jumps and high accelerations than forwards, indicating that they may not be exerting much effort. We will proceed by exploring our forwards dataframe.</p>
-<div id="b6f6d978" class="cell" data-execution_count="19">
+<div id="4ee16a5d" class="cell" data-execution_count="19">
 <div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>sns.lineplot(data<span class="op">=</span>forward_df, x<span class="op">=</span><span class="st">'Period Number'</span>, y<span class="op">=</span><span class="st">'Player Load Per Minute'</span>, hue<span class="op">=</span><span class="st">'About'</span>, legend<span class="op">=</span><span class="va">False</span>, alpha<span class="op">=</span><span class="fl">0.5</span>)</span>
 <span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>sns.despine()</span>
 <span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"PlayerLoad by Period"</span>)</span>
@@ -643,7 +643,7 @@ dtype: object</code></pre>
 </div>
 </div>
 <p>We can see that PlayerLoad does change by period, peaking with periods around 2. From our dataframe it appears these are the game periods, indicating higher effort exerted during games than practices by forwards. This should be noted as we progress throughout our project.</p>
-<div id="59aa191c" class="cell" data-execution_count="20">
+<div id="1a490c34" class="cell" data-execution_count="20">
 <div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>fig, axes <span class="op">=</span> plt.subplots(<span class="bu">len</span>(vars_list), <span class="dv">1</span>, figsize<span class="op">=</span>(<span class="dv">4</span>, <span class="dv">2</span><span class="op">*</span><span class="bu">len</span>(vars_list)))</span>
 <span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i, column <span class="kw">in</span> <span class="bu">enumerate</span>(vars_list):</span>
@@ -663,7 +663,7 @@ dtype: object</code></pre>
 </div>
 </div>
 <p>Session total jumps appears to be roughly normally distributed here, as well as player load per minute. Our other variables are skewed to the right, indicating we have high outliers. We can look at boxplots of our skewed variables to explore this further.</p>
-<div id="d93b21e3" class="cell" data-execution_count="21">
+<div id="34415b91" class="cell" data-execution_count="21">
 <div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>sns.boxplot(forward_df[<span class="st">'Total Player Load'</span>])</span>
 <span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Boxplot of Total Player Load'</span>)</span>
 <span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>sns.despine()</span>
@@ -676,7 +676,7 @@ dtype: object</code></pre>
 </div>
 </div>
 </div>
-<div id="fc3253f2" class="cell" data-execution_count="22">
+<div id="f4e9105b" class="cell" data-execution_count="22">
 <div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>sns.boxplot(forward_df[<span class="st">'IMA Accel High'</span>])</span>
 <span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Boxplot of IMA Accel High'</span>)</span>
 <span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>sns.despine()</span>
@@ -689,7 +689,7 @@ dtype: object</code></pre>
 </div>
 </div>
 </div>
-<div id="3cb2c378" class="cell" data-execution_count="23">
+<div id="07891a83" class="cell" data-execution_count="23">
 <div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>sns.boxplot(forward_df[<span class="st">'IMA Jump Count High Band'</span>])</span>
 <span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Boxplot of IMA Jump Count High Band'</span>)</span>
 <span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>sns.despine()</span>
@@ -703,7 +703,7 @@ dtype: object</code></pre>
 </div>
 </div>
 <p>There are clearly many high outliers in our data set</p>
-<div id="79a8ebc5" class="cell" data-execution_count="24">
+<div id="7052cf23" class="cell" data-execution_count="24">
 <div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="co">#games_df = df[df['Period'].isin(['2. Period 1', '3. Period 2', '1. Warmup'])]</span></span>
 <span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a><span class="co">#practice_df = df[~df['Period'].isin(['2. Period 1', '3. Period 2', '1. Warmup'])]</span></span>
 <span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -713,7 +713,7 @@ dtype: object</code></pre>
 </section>
 <section id="exploring-relationships-between-our-variables" class="level3" data-number="4.0.3">
 <h3 data-number="4.0.3" class="anchored" data-anchor-id="exploring-relationships-between-our-variables"><span class="header-section-number">4.0.3</span> Exploring relationships between our variables</h3>
-<div id="d23cb4b5" class="cell" data-execution_count="25">
+<div id="668876fc" class="cell" data-execution_count="25">
 <div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Pairplots showing correlation between our key variables</span></span>
 <span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>key_vars_df <span class="op">=</span> forward_df[vars_list]</span>
 <span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>sns.pairplot(key_vars_df, plot_kws<span class="op">=</span>{<span class="st">'color'</span>: <span class="st">'orange'</span>})</span>
@@ -727,7 +727,7 @@ dtype: object</code></pre>
 </div>
 </div>
 <p>From the pair plots it can be seen that there is a moderate correlation between Total Player Load and IMA Accel High. Other than that there are no relationships that seem to show great correlation between our variables. Collinearity does not appear to be of concern but we can look at a heatmap of our most important variables to explore more precise values.</p>
-<div id="4ef62498" class="cell" data-execution_count="26">
+<div id="89ff2835" class="cell" data-execution_count="26">
 <div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>selected_cols <span class="op">=</span> [<span class="st">'Player Load Per Minute'</span>, <span class="st">'IMA Accel High'</span>, <span class="st">'IMA Jump Count High Band'</span>]</span>
 <span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>key_corr <span class="op">=</span> forward_df[selected_cols].corr()</span>
 <span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a></span>
