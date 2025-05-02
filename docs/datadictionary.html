@@ -8,7 +8,7 @@
 
 <meta name="description" content="SINGLE LINE BELOW TITLE">
 
-<title>5&nbsp; Untitled – INSERT REPORT TITLE</title>
+<title>5&nbsp; Basketball Player Load Data Dictionary – INSERT REPORT TITLE</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -82,7 +82,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./datadictionary.html"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Untitled</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./datadictionary.html"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Basketball Player Load Data Dictionary</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -116,13 +116,13 @@ ul.task-list li input[type="checkbox"] {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Untitled</span></span></a>
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Index</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./datacleaning.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Untitled</span></span></a>
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Data Cleaning</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -134,13 +134,13 @@ ul.task-list li input[type="checkbox"] {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./dataviz.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Untitled</span></span></a>
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Dataviz</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./datadictionary.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Untitled</span></span></a>
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Basketball Player Load Data Dictionary</span></span></a>
   </div>
 </li>
     </ul>
@@ -148,15 +148,22 @@ ul.task-list li input[type="checkbox"] {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#variable-definitions" id="toc-variable-definitions" class="nav-link active" data-scroll-target="#variable-definitions"><span class="header-section-number">5.1</span> Variable Definitions</a></li>
+  <li><a href="#notes" id="toc-notes" class="nav-link" data-scroll-target="#notes"><span class="header-section-number">5.2</span> Notes</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Untitled</span></h1>
+<h1 class="title"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Basketball Player Load Data Dictionary</span></h1>
 </div>
 
 
@@ -173,8 +180,79 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
+<section id="variable-definitions" class="level2" data-number="5.1">
+<h2 data-number="5.1" class="anchored" data-anchor-id="variable-definitions"><span class="header-section-number">5.1</span> Variable Definitions</h2>
+<p>This data dictionary reflects variables retained after filtering and cleaning two Catapult datasets from Seasons 1 and 2, excluding player-specific entries and separating game vs.&nbsp;practice data.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 23%">
+<col style="width: 76%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Variable Name</th>
+<th>Operational Definition</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>Date</code></td>
+<td>The calendar date of the session. Converted to a datetime format and sorted per player.</td>
+</tr>
+<tr class="even">
+<td><code>Season</code></td>
+<td>Indicates which dataset the session came from (either “Season 1” or “Season 2”).</td>
+</tr>
+<tr class="odd">
+<td><code>About</code></td>
+<td>The athlete’s full name. Used to track individual session data; one player removed.</td>
+</tr>
+<tr class="even">
+<td><code>Position</code></td>
+<td>The athlete’s listed basketball position (e.g., Guard, Forward, Center).</td>
+</tr>
+<tr class="odd">
+<td><code>Period Number</code></td>
+<td>Numerical label representing a segment of time during a session (e.g., quarter number).</td>
+</tr>
+<tr class="even">
+<td><code>Period</code></td>
+<td>Text description of a session segment (e.g., “Period 1”, “Skill Work”).</td>
+</tr>
+<tr class="odd">
+<td><code>Total Player Load</code></td>
+<td>Overall workload calculated from accelerometer data; reflects cumulative movement.</td>
+</tr>
+<tr class="even">
+<td><code>Player Load Per Minute</code></td>
+<td>Average physical load per minute played. Normalizes <code>Total Player Load</code> by time.</td>
+</tr>
+<tr class="odd">
+<td><code>IMA Accel High</code></td>
+<td>Count of high-intensity accelerations, such as fast breaks or hard cuts.</td>
+</tr>
+<tr class="even">
+<td><code>IMA Jump Count High Band</code></td>
+<td>Count of jumps in the highest effort band (e.g., blocks, dunks, rebounds).</td>
+</tr>
+<tr class="odd">
+<td><code>Session Total Jumps</code></td>
+<td>Total number of jumps captured by the sensor during a session.</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="notes" class="level2" data-number="5.2">
+<h2 data-number="5.2" class="anchored" data-anchor-id="notes"><span class="header-section-number">5.2</span> Notes</h2>
+<ul>
+<li>The dataset was cleaned by removing duplicates, excluding one player (“Ben Vander Plas”), and filtering by <code>Position</code> and <code>Period</code>.</li>
+<li>Game data was identified by rows where the <code>Period</code> string included the word “period” (e.g., “Period 1”, “Period 2”).</li>
+<li>Practice data was identified by exclusion of those <code>Period</code> labels.</li>
+</ul>
+<p>Sensor data was sourced from Catapult and reflects a mixture of accelerometer and jump-based metrics, typically used to monitor basketball workload and readiness.</p>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -596,8 +674,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./dataviz.html" class="pagination-link" aria-label="Untitled">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Untitled</span></span>
+      <a href="./dataviz.html" class="pagination-link" aria-label="Dataviz">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Dataviz</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">

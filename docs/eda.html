@@ -154,13 +154,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Untitled</span></span></a>
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Index</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./datacleaning.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Untitled</span></span></a>
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Data Cleaning</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -172,13 +172,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./dataviz.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Untitled</span></span></a>
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Dataviz</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./datadictionary.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Untitled</span></span></a>
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Basketball Player Load Data Dictionary</span></span></a>
   </div>
 </li>
     </ul>
@@ -218,7 +218,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<div id="3483d2eb" class="cell" data-execution_count="1">
+<div id="346000fe" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Data preperation lines, not outputted on final report</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
@@ -253,11 +253,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <section id="descriptive-statistics-distributions" class="level3">
 <h3 class="anchored" data-anchor-id="descriptive-statistics-distributions">Descriptive Statistics &amp; Distributions</h3>
-<div id="93adf7cb" class="cell" data-execution_count="2">
+<div id="d8238a54" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Pulling out key numeric variables</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>vars_list <span class="op">=</span> [<span class="st">'Total Player Load'</span>, <span class="st">'Player Load Per Minute'</span>, <span class="st">'IMA Accel High'</span>, <span class="st">'IMA Jump Count High Band'</span>, <span class="st">'Session Total Jumps'</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="dd55856a" class="cell" data-execution_count="3">
+<div id="c65980f7" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>forward_df.describe(include<span class="op">=</span>[<span class="bu">int</span>, <span class="bu">float</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="3">
 <div>
@@ -354,7 +354,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<div id="5511a359" class="cell" data-execution_count="4">
+<div id="69736b67" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>center_df.describe(include<span class="op">=</span>[<span class="bu">int</span>, <span class="bu">float</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="4">
 <div>
@@ -451,7 +451,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<div id="9bdb3b5a" class="cell" data-execution_count="5">
+<div id="2f3ab782" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>guard_df.describe(include<span class="op">=</span>[<span class="bu">int</span>, <span class="bu">float</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="5">
 <div>
@@ -549,7 +549,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>Mean total player load is highest for forwards, but they also have more variance. It seems that centers have more high band jumps and high accelerations than forwards, indicating that they may not be exerting much effort. We will proceed by exploring our forwards dataframe.</p>
-<div id="09c791dd" class="cell" data-execution_count="6">
+<div id="3377dcff" class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>sns.lineplot(data<span class="op">=</span>forward_df, x<span class="op">=</span><span class="st">'Period Number'</span>, y<span class="op">=</span><span class="st">'Player Load Per Minute'</span>, hue<span class="op">=</span><span class="st">'About'</span>, legend<span class="op">=</span><span class="va">False</span>, alpha<span class="op">=</span><span class="fl">0.5</span>)</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>sns.despine()</span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"PlayerLoad by Period"</span>)</span>
@@ -564,7 +564,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>We can see that PlayerLoad does change by period, peaking with periods around 2. From our dataframe it appears these are the game periods, indicating higher effort exerted during games than practices by forwards. This should be noted as we progress throughout our project.</p>
-<div id="773f4e55" class="cell" data-execution_count="7">
+<div id="d414c825" class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>fig, axes <span class="op">=</span> plt.subplots(<span class="bu">len</span>(vars_list), <span class="dv">1</span>, figsize<span class="op">=</span>(<span class="dv">4</span>, <span class="dv">2</span><span class="op">*</span><span class="bu">len</span>(vars_list)))</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i, column <span class="kw">in</span> <span class="bu">enumerate</span>(vars_list):</span>
@@ -584,7 +584,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>Session total jumps appears to be roughly normally distributed here, as well as player load per minute. Our other variables are skewed to the right, indicating we have high outliers. We can look at boxplots of our skewed variables to explore this further.</p>
-<div id="555025db" class="cell" data-execution_count="8">
+<div id="2781d7f5" class="cell" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>sns.boxplot(forward_df[<span class="st">'Total Player Load'</span>])</span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Boxplot of Total Player Load'</span>)</span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>sns.despine()</span>
@@ -597,7 +597,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<div id="5c48f1c8" class="cell" data-execution_count="9">
+<div id="d6663d5c" class="cell" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>sns.boxplot(forward_df[<span class="st">'IMA Accel High'</span>])</span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Boxplot of IMA Accel High'</span>)</span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>sns.despine()</span>
@@ -610,7 +610,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<div id="086ef110" class="cell" data-execution_count="10">
+<div id="c4ad99d1" class="cell" data-execution_count="10">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>sns.boxplot(forward_df[<span class="st">'IMA Jump Count High Band'</span>])</span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Boxplot of IMA Jump Count High Band'</span>)</span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>sns.despine()</span>
@@ -624,7 +624,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>There are clearly many high outliers in our data set</p>
-<div id="231aa207" class="cell" data-execution_count="11">
+<div id="e4e283c9" class="cell" data-execution_count="11">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co">#games_df = df[df['Period'].isin(['2. Period 1', '3. Period 2', '1. Warmup'])]</span></span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="co">#practice_df = df[~df['Period'].isin(['2. Period 1', '3. Period 2', '1. Warmup'])]</span></span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -634,7 +634,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="exploring-relationships-between-our-variables" class="level3">
 <h3 class="anchored" data-anchor-id="exploring-relationships-between-our-variables">Exploring relationships between our variables</h3>
-<div id="0fbdf470" class="cell" data-execution_count="12">
+<div id="cfc8ea31" class="cell" data-execution_count="12">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Pairplots showing correlation between our key variables</span></span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>key_vars_df <span class="op">=</span> forward_df[vars_list]</span>
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>sns.pairplot(key_vars_df, plot_kws<span class="op">=</span>{<span class="st">'color'</span>: <span class="st">'orange'</span>})</span>
@@ -648,7 +648,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>From the pair plots it can be seen that there is a moderate correlation between Total Player Load and IMA Accel High. Other than that there are no relationships that seem to show great correlation between our variables. Collinearity does not appear to be of concern but we can look at a heatmap of our most important variables to explore more precise values.</p>
-<div id="2e467e07" class="cell" data-execution_count="13">
+<div id="fb77aaf0" class="cell" data-execution_count="13">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>selected_cols <span class="op">=</span> [<span class="st">'Player Load Per Minute'</span>, <span class="st">'IMA Accel High'</span>, <span class="st">'IMA Jump Count High Band'</span>]</span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>key_corr <span class="op">=</span> forward_df[selected_cols].corr()</span>
 <span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -1090,13 +1090,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./datacleaning.html" class="pagination-link" aria-label="Untitled">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Untitled</span></span>
+      <a href="./datacleaning.html" class="pagination-link" aria-label="Data Cleaning">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Data Cleaning</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./dataviz.html" class="pagination-link" aria-label="Untitled">
-        <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Untitled</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./dataviz.html" class="pagination-link" aria-label="Dataviz">
+        <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Dataviz</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
