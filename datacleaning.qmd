@@ -3,3 +3,93 @@ title: "Untitled"
 format: html
 ---
 
+```{python}
+# Imports
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+import seaborn as sns
+```
+
+```{python}
+s1_df = pd.read_csv("../project/EDA/Data/catapult_s1.csv")
+s1_df = pd.DataFrame(s1_df)
+
+s2_df = pd.read_csv("../project/EDA/Data/catapult_s2.csv")
+s2_df = pd.DataFrame(s2_df)
+```
+
+Our first step in preparing our data was reading it in. We read in the two dataframes for the individual seasons(2022-23 and 2023-24).
+
+```{python}
+s1_df['Season'] = 'Season 1'
+s2_df['Season'] = 'Season 2'
+df = pd.concat([s1_df, s2_df], ignore_index=True)
+```
+
+We then combined both seasons, centralizing our data into one single dataframe.
+
+```{python}
+df = df[['Date', 'Season', 'About', 'Position', 'Period Number', 'Period', 'Total Player Load', 'Player Load Per Minute', 'IMA Accel High', 'IMA Jump Count High Band', 'Session Total Jumps']]
+```
+
+Once we had all of our data read into one dataframe, we filtered it down to include only our variables of interest (as shown above). We wanted to explore exertion in both practice in games, with a focus on positional differences. We felt that PlayerLoad, IMA Accel High, IMA Jump Count High Band, and Session Total Jumps would provide the most insight on this topic. We also kept identifying variables such as date, season, period, etc.
+
+```{python}
+plt.figure(figsize=(12, 6))
+sns.heatmap(df.isnull(), cbar=False, cmap="viridis")
+plt.title("Missing Data Heatmap")
+plt.show()
+```
+
+We used a heatmap to visualize the number of missing values in our dataframe, which can be seen in yellow. This indicates that our Session Total Jumps variable(referring to the total number of jumps each player has in all periods at each date) is missing a lot of values. We will not use Session Total Jumps in our report as a key variable considering the prevalence of missing values. 
+
+```{python}
+# Check data types
+print(df.dtypes)
+```
+
+We proceeded to check our data types to see if we would need to convert any variables to a different type(such as an object to an int/float). We concluded that we did not need to do so.
+
+```{python}
+# Convert Date to datetime
+df['Date'] = pd.to_datetime(df['Date'])
+```
+
+We converted our 'Date' variable to datetime format for future the exploration of change across time in our report.
+
+```{python}
+df.shape
+```
+
+Looking at the shape of our dataframe, we currently have 29,442 observations of 11 variables
+
+```{python}
+# Remove duplicates
+df = df.drop_duplicates()
+```
+
+```{python}
+df.shape
+```
+
+After dropping our duplicate variables, we are left with 29,401 observations, indicating a low prevalence of duplicates.
+
+
+
+```{python}
+# Removing Vander Plas rows
+df = df[df['About'] != 'Ben Vander Plas']
+```
+
+We removed all observations where Ben Vander Plas was the athlete. We did this because this data is supposed to be anonymous and we did not want to reveal any personal information about players.
+
+```{python}
+# Splitting up so we can look at positional differences
+forward_df = df[df['Position'] == 'Forward']
+guard_df = df[df['Position'] == 'Guard']
+center_df = df[df['Position'] == 'Center']
+```
+
+We created additional dataframes for each position. We did so because we wanted to analyze differences across position, specifically against forwards. This allowed us to easily access positional differences when looking at statistics and creating visualizations.
+

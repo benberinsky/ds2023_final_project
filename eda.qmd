@@ -1,95 +1,38 @@
 ---
 title: "EDA"
 format: html
+number-sections: false
 ---
 
-# EDA (Group) DS2023
-Tristen Davin, Margaux Reynolds, Benjamin Berinsky, Ben Garozzo
-
-We are writing our final report for the coaches, team members, and other members of UVA Men's Basketball. We hope to provide insights on practices and games by looking at the catapult data of the 22-23 and 23-24 seasons, guiding decisions based on how intense practices should be with a specific focus on forwards.
-
-### Problem Statement
-Over the past decade, UVA has has produced many talented forwards. Some notable names include De'Andre Hunter and Trey Murphy, current impact players in the NBA. These names brought them to multiple NCAA Tournaments and a Championship victory in 2019. However the men's basketball team has been declining in performance every year since the 22-23 season. Have there been any differences in effort in practices versus games, specifically at the forward position, through metrics such as PlayerLoad (PL), high acceleration, or jump count high band? 
-
-```{python}
+```{python, echo=false}
+# Data preperation lines, not outputted on final report
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 import seaborn as sns
-```
 
-```{python}
 s1_df = pd.read_csv("../project/EDA/Data/catapult_s1.csv")
 s1_df = pd.DataFrame(s1_df)
 
 s2_df = pd.read_csv("../project/EDA/Data/catapult_s2.csv")
 s2_df = pd.DataFrame(s2_df)
-```
-```{python}
-print("S1 shape:", s1_df.shape)
-print("S2 shape:", s2_df.shape)
-```
-```{python}
-# Combining Season 1 and Season 2 dataframes
-s1_df['Season'] = 'Season 1'
-s2_df['Season'] = 'Season 2'
-df = pd.concat([s1_df, s2_df], ignore_index=True)
-```
 
-```{python}
-# Combining Season 1 and Season 2 dataframes
 s1_df['Season'] = 'Season 1'
 s2_df['Season'] = 'Season 2'
 df = pd.concat([s1_df, s2_df], ignore_index=True)
 
-```
-
-```{python}
 df = df[['Date', 'Season', 'About', 'Position', 'Period Number', 'Period', 'Total Player Load', 'Player Load Per Minute', 'IMA Accel High', 'IMA Jump Count High Band', 'Session Total Jumps']]
-```
 
-```{python}
-plt.figure(figsize=(12, 6))
-sns.heatmap(df.isnull(), cbar=False, cmap="viridis")
-plt.title("Missing Data Heatmap")
-plt.show()
-# Yellow represents missing values
-```
+df['Date'] = pd.to_datetime(df['Date'])
 
-Session total jump is supposed to have missing values because it refers to the total number of jumps each player has in all periods at each date. 
-
-```{python}
-# Check data types
-print(df.dtypes)
-```
-
-```{python}
-# Convert Date to datetime
-# df['Date'] = pd.to_datetime(df['Date'], format='%m/%d/%y')
-```
-
-```{python}
-df.shape
-```
-
-```{python}
-# Remove duplicates
 df = df.drop_duplicates()
 
-```
+df = df[df['About'] != 'Ben Vander Plas']
 
-```{python}
-df.shape
-```
-
-```{python}
-# Splitting up so we can look at positional differences
 forward_df = df[df['Position'] == 'Forward']
 guard_df = df[df['Position'] == 'Guard']
 center_df = df[df['Position'] == 'Center']
-```
 
-```{python}
 mask = df['Period'].str.contains(r'\bperiod\b\s*\d*', case=False, na=False)
 games_df = df[mask]
 practice_df = df[~mask]
