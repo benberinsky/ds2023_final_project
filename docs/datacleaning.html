@@ -208,14 +208,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<div id="e1b85c42" class="cell" data-execution_count="1">
+<div id="01682b67" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Imports</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="86a87fca" class="cell" data-execution_count="2">
+<div id="6e13cacc" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>s1_df <span class="op">=</span> pd.read_csv(<span class="st">"../project/EDA/Data/catapult_s1.csv"</span>)</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>s1_df <span class="op">=</span> pd.DataFrame(s1_df)</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -223,17 +223,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>s2_df <span class="op">=</span> pd.DataFrame(s2_df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Our first step in preparing our data was reading it in. We read in the two dataframes for the individual seasons(2022-23 and 2023-24).</p>
-<div id="ee2632e3" class="cell" data-execution_count="3">
+<div id="7f51729e" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>s1_df[<span class="st">'Season'</span>] <span class="op">=</span> <span class="st">'Season 1'</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>s2_df[<span class="st">'Season'</span>] <span class="op">=</span> <span class="st">'Season 2'</span></span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.concat([s1_df, s2_df], ignore_index<span class="op">=</span><span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>We then combined both seasons, centralizing our data into one single dataframe.</p>
-<div id="e184c86c" class="cell" data-execution_count="4">
+<div id="3f1ddc80" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> df[[<span class="st">'Date'</span>, <span class="st">'Season'</span>, <span class="st">'About'</span>, <span class="st">'Position'</span>, <span class="st">'Period Number'</span>, <span class="st">'Period'</span>, <span class="st">'Total Player Load'</span>, <span class="st">'Player Load Per Minute'</span>, <span class="st">'IMA Accel High'</span>, <span class="st">'IMA Jump Count High Band'</span>, <span class="st">'Session Total Jumps'</span>]]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Once we had all of our data read into one dataframe, we filtered it down to include only our variables of interest (as shown above). We wanted to explore exertion in both practice in games, with a focus on positional differences. We felt that PlayerLoad, IMA Accel High, IMA Jump Count High Band, and Session Total Jumps would provide the most insight on this topic. We also kept identifying variables such as date, season, period, etc.</p>
-<div id="f820482e" class="cell" data-execution_count="5">
+<div id="dca5d345" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">12</span>, <span class="dv">6</span>))</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>sns.heatmap(df.isnull(), cbar<span class="op">=</span><span class="va">False</span>, cmap<span class="op">=</span><span class="st">"viridis"</span>)</span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"Missing Data Heatmap"</span>)</span>
@@ -247,7 +247,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>We used a heatmap to visualize the number of missing values in our dataframe, which can be seen in yellow. This indicates that our Session Total Jumps variable(referring to the total number of jumps each player has in all periods at each date) is missing a lot of values. We will not use Session Total Jumps in our report as a key variable considering the prevalence of missing values.</p>
-<div id="f2b5d3fc" class="cell" data-execution_count="6">
+<div id="c16cd2f2" class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Check data types</span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(df.dtypes)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -266,35 +266,35 @@ dtype: object</code></pre>
 </div>
 </div>
 <p>We proceeded to check our data types to see if we would need to convert any variables to a different type(such as an object to an int/float). We concluded that we did not need to do so.</p>
-<div id="04673363" class="cell" data-execution_count="7">
+<div id="ad6cf9cf" class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert Date to datetime</span></span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>df[<span class="st">'Date'</span>] <span class="op">=</span> pd.to_datetime(df[<span class="st">'Date'</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>We converted our ‘Date’ variable to datetime format for future the exploration of change across time in our report.</p>
-<div id="e6538afc" class="cell" data-execution_count="8">
+<div id="91e88657" class="cell" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>df.shape</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="8">
 <pre><code>(29442, 11)</code></pre>
 </div>
 </div>
 <p>Looking at the shape of our dataframe, we currently have 29,442 observations of 11 variables</p>
-<div id="49dd0f72" class="cell" data-execution_count="9">
+<div id="bd4c0f9e" class="cell" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Remove duplicates</span></span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> df.drop_duplicates()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="0850acac" class="cell" data-execution_count="10">
+<div id="64ead09b" class="cell" data-execution_count="10">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>df.shape</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="10">
 <pre><code>(29401, 11)</code></pre>
 </div>
 </div>
 <p>After dropping our duplicate variables, we are left with 29,401 observations, indicating a low prevalence of duplicates.</p>
-<div id="ad65a144" class="cell" data-execution_count="11">
+<div id="849018bc" class="cell" data-execution_count="11">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Removing Vander Plas rows</span></span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> df[df[<span class="st">'About'</span>] <span class="op">!=</span> <span class="st">'Ben Vander Plas'</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>We removed all observations where Ben Vander Plas was the athlete. We did this because this data is supposed to be anonymous and we did not want to reveal any personal information about players.</p>
-<div id="af7d64b0" class="cell" data-execution_count="12">
+<div id="11a097c2" class="cell" data-execution_count="12">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Splitting up so we can look at positional differences</span></span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>forward_df <span class="op">=</span> df[df[<span class="st">'Position'</span>] <span class="op">==</span> <span class="st">'Forward'</span>]</span>
 <span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>guard_df <span class="op">=</span> df[df[<span class="st">'Position'</span>] <span class="op">==</span> <span class="st">'Guard'</span>]</span>
