@@ -3,15 +3,15 @@ project:
   output-dir: docs
 
 book:
-  title: "INSERT REPORT TITLE"
+  title: "Analyzing Player Load and Explosive Movements in UVA Mens Basketball"
   author: "Tristen Davin, Margaux Reynolds, Benjamin Berinsky, Ben Garozzo"
-  favicon: "INSERT ICON FOR REPORT"
-  description: SINGLE LINE BELOW TITLE
-  keyword: "Insert keywords"
+  favicon: "images/mens_basketball.png"
+  description: An Analysis of Positional Workloads from the 2022/23 and 2023/24 Seasons
+  keyword: "Dataviz, Basketball, UVA, Catapult, Data Science"
   url: "https://benberinsky.github.io/ds2023_finalproject"
-  #Need to add sidebar picture as logo var later
   sidebar:
     search: true
+    logo: "images/uva_logo.jpg"
   repo-url: "https://github.com/benberinsky/ds2023_finalproject"
   repo-branch: main
   image: insert image
@@ -26,6 +26,5 @@ book:
 format:
   html:
     theme:
-      - light
+      - flatly
     code-fold: false
-    backgroundcolor: "#FFFFFF"
