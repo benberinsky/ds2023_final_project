@@ -13,7 +13,7 @@ book:
   sidebar:
     search: true
     logo: "images/mens_basketball.png"
-  repo-url: "https://github.com/benberinsky/ds2023_finalproject"
+  repo-url: "https://github.com/benberinsky/ds2023_final_project"
   repo-branch: main
   image: "images/datasciencelogo.png"
 
