@@ -8,7 +8,7 @@
 
 <meta name="description" content="SINGLE LINE BELOW TITLE">
 
-<title>5&nbsp; Basketball Player Load Data Dictionary – INSERT REPORT TITLE</title>
+<title>Basketball Player Load Data Dictionary – INSERT REPORT TITLE</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -95,10 +95,7 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
-    <div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
-      <a href="./index.html" class="sidebar-logo-link">
-      <img src="./sidebar picture" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
-      </a>
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
       <a href="./">INSERT REPORT TITLE</a> 
         <div class="sidebar-tools-main">
@@ -153,8 +150,8 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#variable-definitions" id="toc-variable-definitions" class="nav-link active" data-scroll-target="#variable-definitions"><span class="header-section-number">5.1</span> Variable Definitions</a></li>
-  <li><a href="#notes" id="toc-notes" class="nav-link" data-scroll-target="#notes"><span class="header-section-number">5.2</span> Notes</a></li>
+  <li><a href="#variable-definitions" id="toc-variable-definitions" class="nav-link active" data-scroll-target="#variable-definitions">Variable Definitions</a></li>
+  <li><a href="#notes" id="toc-notes" class="nav-link" data-scroll-target="#notes">Notes</a></li>
   </ul>
 </nav>
     </div>
@@ -163,7 +160,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Basketball Player Load Data Dictionary</span></h1>
+<h1 class="title"><span class="chapter-title">Basketball Player Load Data Dictionary</span></h1>
 </div>
 
 
@@ -180,8 +177,8 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="variable-definitions" class="level2" data-number="5.1">
-<h2 data-number="5.1" class="anchored" data-anchor-id="variable-definitions"><span class="header-section-number">5.1</span> Variable Definitions</h2>
+<section id="variable-definitions" class="level2">
+<h2 class="anchored" data-anchor-id="variable-definitions">Variable Definitions</h2>
 <p>This data dictionary reflects variables retained after filtering and cleaning two Catapult datasets from Seasons 1 and 2, excluding player-specific entries and separating game vs.&nbsp;practice data.</p>
 <table class="caption-top table">
 <colgroup>
@@ -242,14 +239,14 @@ ul.task-list li input[type="checkbox"] {
 </tbody>
 </table>
 </section>
-<section id="notes" class="level2" data-number="5.2">
-<h2 data-number="5.2" class="anchored" data-anchor-id="notes"><span class="header-section-number">5.2</span> Notes</h2>
+<section id="notes" class="level2">
+<h2 class="anchored" data-anchor-id="notes">Notes</h2>
 <ul>
 <li>The dataset was cleaned by removing duplicates, excluding one player (“Ben Vander Plas”), and filtering by <code>Position</code> and <code>Period</code>.</li>
 <li>Game data was identified by rows where the <code>Period</code> string included the word “period” (e.g., “Period 1”, “Period 2”).</li>
 <li>Practice data was identified by exclusion of those <code>Period</code> labels.</li>
 </ul>
-<p>Sensor data was sourced from Catapult and reflects a mixture of accelerometer and jump-based metrics, typically used to monitor basketball workload and readiness.</p>
+<p>Sensor data was sourced from Catapult and reflects a mixture of accelerometer and jump-based metrics, used to monitor workload and readiness.</p>
 
 
 </section>

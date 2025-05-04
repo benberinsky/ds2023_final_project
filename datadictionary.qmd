@@ -1,6 +1,7 @@
 ---
 title: "Basketball Player Load Data Dictionary"
 format: html
+number-sections: false
 ---
 
 ## Variable Definitions
@@ -27,4 +28,4 @@ This data dictionary reflects variables retained after filtering and cleaning tw
 - Game data was identified by rows where the `Period` string included the word "period" (e.g., "Period 1", "Period 2").
 - Practice data was identified by exclusion of those `Period` labels.
 
-Sensor data was sourced from Catapult and reflects a mixture of accelerometer and jump-based metrics, typically used to monitor basketball workload and readiness.
+Sensor data was sourced from Catapult and reflects a mixture of accelerometer and jump-based metrics, used to monitor workload and readiness.

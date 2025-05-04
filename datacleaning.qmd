@@ -3,8 +3,7 @@ title: "Data Cleaning"
 format: html
 number-sections: false
 ---
-
-```{python include = false}
+```{python, include = false}
 # Imports
 import pandas as pd
 import numpy as np
@@ -12,6 +11,7 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 ```
 
+### Initial Exploration, Variable Selection
 ```{python}
 s1_df = pd.read_csv("../project/EDA/Data/catapult_s1.csv")
 s1_df = pd.DataFrame(s1_df)
@@ -20,7 +20,7 @@ s2_df = pd.read_csv("../project/EDA/Data/catapult_s2.csv")
 s2_df = pd.DataFrame(s2_df)
 ```
 
-Our first step in preparing our data was reading it in. We read in the two dataframes for the individual seasons(2022-23 and 2023-24).
+Our first step in preparing our data was reading it in. We read in the two dataframes for the individual UVA basketball seasons(2022-23 and 2023-24). Note: This data is simulated
 
 ```{python}
 s1_df['Season'] = 'Season 1'
@@ -59,6 +59,7 @@ df['Date'] = pd.to_datetime(df['Date'])
 
 We converted our 'Date' variable to datetime format for future the exploration of change across time in our report.
 
+### Removing Observations
 ```{python}
 df.shape
 ```

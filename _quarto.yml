@@ -4,13 +4,13 @@ project:
 
 book:
   title: "INSERT REPORT TITLE"
-  author: "INSERT NAMES"
+  author: "Tristen Davin, Margaux Reynolds, Benjamin Berinsky, Ben Garozzo"
   favicon: "INSERT ICON FOR REPORT"
   description: SINGLE LINE BELOW TITLE
-  keyword: "Keywords for when people are searching for report"
+  keyword: "Insert keywords"
   url: "https://benberinsky.github.io/ds2023_finalproject"
+  #Need to add sidebar picture as logo var later
   sidebar:
-    logo: sidebar picture
     search: true
   repo-url: "https://github.com/benberinsky/ds2023_finalproject"
   repo-branch: main
