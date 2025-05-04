@@ -3,7 +3,7 @@ title: "Data Cleaning"
 format: html
 number-sections: false
 ---
-```{python, include = false}
+```{python, echo = false}
 # Imports
 import pandas as pd
 import numpy as np

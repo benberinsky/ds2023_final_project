@@ -1,5 +1,239 @@
 ---
 title: "Dataviz"
 format: html
+number-sections: false
 ---
 
+```{python, echo = false}
+# Imports
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+# Data prep
+s1_df = pd.read_csv("../project/EDA/Data/catapult_s1.csv")
+s1_df = pd.DataFrame(s1_df)
+
+s2_df = pd.read_csv("../project/EDA/Data/catapult_s2.csv")
+s2_df = pd.DataFrame(s2_df)
+s1_df['Season'] = 'Season 1'
+s2_df['Season'] = 'Season 2'
+df = pd.concat([s1_df, s2_df], ignore_index=True)
+df = df[df['About'] != 'Ben Vander Plas']
+df = df[['Date', 'Season', 'About', 'Position', 'Period Number', 'Period', 'Total Player Load', 
+         'Player Load Per Minute', 'IMA Accel High', 'IMA Jump Count High Band', 'Session Total Jumps']]
+df = df.drop_duplicates()
+df['Date'] = pd.to_datetime(df['Date'])
+df = df.sort_values(['About', 'Date'])
+forward_df = df[df['Position'] == 'Forward']
+guard_df = df[df['Position'] == 'Guard']
+center_df = df[df['Position'] == 'Center']
+
+# Splitting into game and practice df
+filter = df['Period'].str.contains(r'\bperiod\b\s*\d*', case=False, na=False)
+games_df = df[filter]
+practice_df = df[~filter]
+```
+
+### Graph 1 Code
+```{python}
+# Setting font
+plt.rcParams['font.family'] = 'Avenir Next'
+
+# Creating fig and axs, adding title, and subtext
+fig, axs = plt.subplots(1, 3, figsize=(15, 5), sharey=True)
+plt.suptitle('Explosive Movement Metrics for Forwards fall Between Centers, Guards', fontsize=24, weight='bold', color='#3a3a3a')
+plt.figtext(0.5, 0.85, '2022/23 and 2023/24 Regular Season Data', 
+           ha='center', fontsize=14, style='italic', color='#555555')
+
+# Define metrics and names
+metrics = ['PlayerLoad Per Minute', 'IMA Accel High(accel>3m/s/s)', 'IMA Jump Count High Band (jumps>40cm)']
+metric_keys = ['Player Load Per Minute', 'IMA Accel High', 'IMA Jump Count High Band'] 
+
+# Setting color to be orange for forwards, gray for all else
+position_colors = {'Guard': '#d3d3d3', 'Forward': '#fe5a03', 'Center': '#d3d3d3'}
+
+# Finding mean for position
+summary_df = pd.DataFrame({
+    'Position': ['Guard', 'Forward', 'Center'],
+    'Player Load Per Minute': [guard_df['Player Load Per Minute'].mean(),
+                                forward_df['Player Load Per Minute'].mean(), center_df['Player Load Per Minute'].mean()],
+    'IMA Accel High': [guard_df['IMA Accel High'].mean(), 
+                       forward_df['IMA Accel High'].mean(), center_df['IMA Accel High'].mean()],
+    'IMA Jump Count High Band': [guard_df['IMA Jump Count High Band'].mean(), 
+                                 forward_df['IMA Jump Count High Band'].mean(), center_df['IMA Jump Count High Band'].mean()]})
+
+# Calculating standard deviation for position to indicate error
+error_df = pd.DataFrame({
+    'Position': ['Guard', 'Forward', 'Center'],
+    'Player Load Per Minute': [guard_df['Player Load Per Minute'].std(),
+                                forward_df['Player Load Per Minute'].std(), 
+                                center_df['Player Load Per Minute'].std()],
+    'IMA Accel High': [guard_df['IMA Accel High'].std(), 
+                       forward_df['IMA Accel High'].std(), 
+                       center_df['IMA Accel High'].std()],
+    'IMA Jump Count High Band': [guard_df['IMA Jump Count High Band'].std(), 
+                                 forward_df['IMA Jump Count High Band'].std(), 
+                                 center_df['IMA Jump Count High Band'].std()]})
+
+# Looping over both the metric title and key
+for i, (metric_title, metric_key) in enumerate(zip(metrics, metric_keys)):
+    # Extracting position from summary dataframe
+    positions = summary_df['Position']
+    # Extracting mean for given metric
+    values = summary_df[metric_key]
+    # Plotting color for position(orange for forwards, gray otherwise)
+    colors = [position_colors[pos] for pos in positions]
+    # Extracting error
+    errors = error_df[metric_key].values
+    # Plotting the bar at the given axis
+    ax = axs[i]
+    bars = ax.barh(positions, values, color=colors, zorder=2)
+    
+    # Get errors for current metric
+    current_errors = error_df[metric_key].values
+
+    # Adding value labels to each bar, error as well
+    for bar, value, error in zip(bars, values, current_errors):
+        # Round both value and error to one decimal place
+        formatted_value = f'{value:.1f} ± {error:.1f}'
+        # Offset from end of bar
+        ax.text(bar.get_width() + (ax.get_xlim()[1] * 0.02), 
+                bar.get_y() + bar.get_height()/2, 
+                formatted_value,
+                va='center', 
+                size=14, 
+                fontweight='bold', 
+                color='#3a3a3a')
+
+       
+    # Setting title as specified metric
+    ax.set_title(metric_title, loc='left', fontsize=16, weight='bold', color='#3a3a3a')
+    # Creating grid
+    ax.grid(axis='x', linestyle=':', color='gray', zorder=0)
+    # Removing spines
+    ax.spines[['top', 'right', 'bottom']].set_visible(False)
+    # Removing x-tick labels because we show values
+    ax.tick_params(axis='x', length=0, labelsize=0)
+    ax.tick_params(axis='y', length=0, labelsize=12, labelcolor='#111', width=0)
+    ax.locator_params(axis='x', nbins=4)
+    
+    # Add a bit more space to the right of each plot to accommodate the value labels
+    x_max = max(values) * 1.15
+    ax.set_xlim(0, x_max)
+
+
+# Adding text at the bottom to indicate the units used
+plt.figtext(0.5, 0.01, 'Units: PlayerLoad = arbitrary units (a.u.); Acceleration = counts over 3 m/s²; Jump Count High Band = jumps over 40 cm',
+            ha='center', fontsize=13, style='italic', color='#555555')
+
+plt.tight_layout()
+# Adding room for title at the top, bottom for text
+plt.subplots_adjust(top=0.725, bottom=0.1)
+plt.show()
+```
+
+### Graph 2 Code
+```{python}
+# Add session type column
+forward_df['Session Type'] = np.where(
+    forward_df['Period'].str.contains(r'\bperiod\b\s*\d*', case=False, na=False),
+    'Game',
+    'Practice'
+)
+
+# Group player and session type
+player_means = forward_df.groupby(['About', 'Session Type'])['Player Load Per Minute'].mean().unstack()
+
+# Sort players by Game values
+player_means = player_means.sort_values(by='Game', ascending=False)
+
+# Plot
+plt.figure(figsize=(10, 6))
+for i, (player, row) in enumerate(player_means.iterrows()):
+    # Plot the line between practice and game values
+    plt.plot([row['Practice'], row['Game']], [i, i], color='gray', linewidth=1.5, zorder=1)
+    # Plot the practice value
+    plt.scatter(row['Practice'], i, color='#fe5a03', label='Practice' if i == 0 else "", zorder=2)
+    # Add data labels for practice values for each player
+    plt.text(row['Practice'], i + 0.2, f"{row['Practice']:.1f}", color='#fe5a03', ha='center', fontsize=8)
+    # Plot the game value
+    plt.scatter(row['Game'], i, color='#2077bd', label='Game' if i == 0 else "", zorder=2)
+    # Add data labels for game values for each player
+    plt.text(row['Game'], i + 0.2, f"{row['Game']:.1f}", color='#2077bd', ha='center', fontsize=8)
+
+# Change yticks to player names
+plt.yticks(range(len(player_means.index)), player_means.index, fontsize=9)
+# Change x-axis limits and tick frequency for more clarity
+plt.xticks(range(5,15, 1))
+# Add a title, legend, remove spines, add a x-axis grid, and show the plot
+plt.suptitle("Player Load/Min for Forwards in Games Far Outpaces Practice Performance", fontsize=18)
+plt.legend()
+plt.gca().spines['top'].set_visible(False)
+plt.gca().spines['right'].set_visible(False)
+plt.grid(True, axis='x', linestyle=':', color='gray', alpha=0.6)
+plt.tight_layout()
+plt.show()
+```
+
+### Graph 3 Code
+```{python}
+plt.rcParams['font.family'] = 'Avenir Next'
+
+# Separate games and practice sessions
+games_df = df[filter].copy()
+practice_df = df[~filter].copy()
+games_df['Session Type'] = 'Game'
+practice_df['Session Type'] = 'Practice'
+
+# Name our metrics as vars in a list
+vars = ['Player Load Per Minute', 'IMA Accel High', 'IMA Jump Count High Band']
+
+# Combine games and practice df 
+df = pd.concat([games_df, practice_df], ignore_index=True)
+df = df[df['Position'] == 'Forward']
+error_df = df.groupby(['Season', 'Session Type'])[vars].std().reset_index() 
+
+# Set parameters for plotting
+grouped_df = df.groupby(['Season', 'Session Type'])[vars].mean().reset_index()
+
+# Set up the fig and axs, colors, and season names
+fig, axs = plt.subplots(1, 2, figsize=(12, 5), sharey=True)
+bar_width = 0.35
+x = range(len(vars))
+colors = {'Game': '#2077bd', 'Practice': '#fe5a03'}
+seasons = ['Season 1', 'Season 2']
+
+# Loop through each season subplot
+for i, season in enumerate(seasons):
+    ax = axs[i]
+    season_data = grouped_df[grouped_df['Season'] == season]
+
+    # Loop through each session type to plot the bars
+    for j, session in enumerate(['Game', 'Practice']):
+        values = season_data[season_data['Session Type'] == session][vars].values.flatten()
+        errors = error_df[(error_df['Season'] == season) & (error_df['Session Type'] == session)][vars].values.flatten() # Calculate errors
+        clipped_errors = np.minimum(errors, values) # Make sure errors are not below 0
+        positions = [p + (j - 0.5) * bar_width for p in x] # Adjust positions for each session type
+        ax.bar(positions, values, width=bar_width, yerr=clipped_errors, color=colors[session], label=session, zorder = 2) # Plot bars with error bars
+
+    ax.set_xticks(x) # Setting x-ticks to the set parameters
+    ax.set_xticklabels(vars, fontsize=9) # Labeling corresponding x-ticks with the variables
+    ax.tick_params(axis = 'y', labelsize=9) # Sets font size for y-ticks 
+    ax.set_title(season, loc='left', fontsize=10) # Setting title for each subplot
+    ax.grid(axis='y', linestyle=':', color='gray', alpha=0.7) # Adding grid for y-axis
+    # Remove spines
+    ax.spines['top'].set_visible(False) 
+    ax.spines['right'].set_visible(False)
+    # Hide tick marks
+    ax.tick_params(axis='x', which='both', length=0)
+    ax.tick_params(axis='y', which='both', length=0)
+    
+# Add a title and legend
+plt.suptitle("Forward's Explosive Movement Metrics are Falling Behind in Practice", fontsize = 20)
+fig.legend(['Game', 'Practice'], loc='upper center', ncol=2, frameon=False, fontsize=10)
+
+plt.tight_layout()
+plt.show()
+```

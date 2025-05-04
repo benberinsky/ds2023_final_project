@@ -5,16 +5,16 @@ project:
 book:
   title: "Analyzing Player Load and Explosive Movements in UVA Mens Basketball"
   author: "Tristen Davin, Margaux Reynolds, Benjamin Berinsky, Ben Garozzo"
-  favicon: "images/mens_basketball.png"
+  favicon: "images/uva_logo.jpg"
   description: An Analysis of Positional Workloads from the 2022/23 and 2023/24 Seasons
   keyword: "Dataviz, Basketball, UVA, Catapult, Data Science"
   url: "https://benberinsky.github.io/ds2023_finalproject"
   sidebar:
     search: true
-    logo: "images/uva_logo.jpg"
+    logo: "images/mens_basketball.png"
   repo-url: "https://github.com/benberinsky/ds2023_finalproject"
   repo-branch: main
-  image: insert image
+  image: "images/datasciencelogo.png"
 
   chapters:
     - index.qmd
