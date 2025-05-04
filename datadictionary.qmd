@@ -1,5 +1,5 @@
 ---
-title: "Basketball Player Load Data Dictionary"
+title: "Data Dictionary"
 format: html
 number-sections: false
 ---
