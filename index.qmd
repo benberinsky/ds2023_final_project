@@ -1,5 +1,35 @@
----
-title: "Index"
-format: html
----
+# Report {.unnumbered}
 
+## Prepared for {.unnumbered}
+
+UVA Men's Basketball Team Members and Coaching Staff.
+
+## Problem Statement
+
+Over the past decade, the UVA Men's Basketball Team has produced elite forwards, including current NBA players De'Andre Hunter and Trey Murphy. These players played pivotal roles in several successful seasons, including multiple NCAA Tournament appearances and a National Championship victory in 2019. Over the years, UVA forwards have stood out for their versatility, athleticism, and explosive ability, often acting as the most dynamic players on the court.
+
+However, since the 2022–23 season, the team has seen a noticeable decline in performance, struggling to maintain the same level of national competitiveness. To begin exploring this shift, we looked at Catapult S7 wearable data from the 2022–23 and 2023–24 seasons. We focused on three key metrics that reflect physical intensity and explosiveness: **PlayerLoad Per Minute**, **high-intensity accelerations**, and **high-band jump counts**. Given UVA’s history of dominant forwards, we expected them to lead in these areas. The bar chart below shows how these metrics compare across positions.
+
+![](images/graph1.jpeg)
+
+Surprisingly, forwards do not lead in any of the three categories. This result led us to narrow our focus specifically to forwards to better understand their physical output, and what factors might be influencing it. **Could current forwards be underperforming because their training does not match game-level intensity?**
+
+## Analysis
+
+After narrowing our focus to forwards, we examined how their physical output differs between games and practices. Using Catapult S7 data, we compared three key metrics: **PlayerLoad Per Minute**, **IMA Accel High**, and **IMA Jump Count High Band**, across both contexts. These metrics reflect different types of high-effort movement and overall physical intensity.
+
+The graph below shows a consistent pattern: for all three metrics, values are substantially higher in games than in practices. In particular, **PlayerLoad Per Minute during games is about twice as high** as it is during practices. This difference holds across all metrics, suggesting that forwards are exerting themselves far more during competition than they are during training. The error bars show that this trend remains consistent even when accounting for variability in the data.
+
+![](images/graph2.png)
+
+This analysis indicates that the intensity of current practices may not be preparing forwards for the level of physical output required during games. This mismatch may be contributing to the team’s overall underperformance on the court, especially in a program where explosiveness has been a defining strength of many successful forwards.
+
+<!-- Add third graph to analysis -->
+
+## Conclusion
+
+These findings highlight a potential area of opportunity for the UVA Men’s Basketball program. Practices are not currently matching the intensity of games for forwards, a position that has historically been central to the team's success. This mismatch in physical demands may be limiting development and in-game performance.
+
+While the goal is not necessarily to make practices harder, they could be made more reflective of game conditions. Emphasizing full-speed, high-effort scenarios, such as full-count 5v5 scrimmages or short bursts of explosive movement, may help players better prepare for competition. Monitoring physical output in real time could also help tailor training to individual needs.
+
+Bridging the gap between practice and game intensity could be a key step toward regaining the edge that once defined UVA’s most successful seasons.
