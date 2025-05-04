@@ -25,6 +25,9 @@ book:
 
 format:
   html:
-    theme:
-      - flatly
+    theme: cosmo 
     code-fold: false
+    toc: true
+    df-print: paged
+
+

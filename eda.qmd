@@ -3,7 +3,8 @@ title: "EDA"
 format: html
 number-sections: false
 ---
-```{python, echo=false}
+```{python}
+#| echo: false
 # Data preperation lines, not outputted on final report
 import pandas as pd
 import numpy as np
