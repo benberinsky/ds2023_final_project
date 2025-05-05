@@ -14,7 +14,7 @@ Over the past decade, the UVA Men's Basketball Team has produced elite forwards,
 
 However, since the 2022–23 season, the team has seen a noticeable decline in performance, struggling to maintain the same level of national competitiveness. To begin exploring this shift, we looked at Catapult S7 wearable data from the 2022–23 and 2023–24 seasons. We focused on three key metrics that reflect physical intensity and explosiveness: **PlayerLoad Per Minute**, **high-intensity accelerations**, and **high-band jump counts**. Given UVA’s history of dominant forwards, we expected them to lead in these areas. The bar chart below shows how these metrics compare across positions.
 
-![](images/graph1.jpeg)
+![](images/graph1.png)
 
 Surprisingly, forwards do not lead in any of the three categories. This result led us to narrow our focus specifically to forwards to better understand their physical output, and what factors might be influencing it. **Could current forwards be underperforming because their training does not match game-level intensity?**
 
@@ -26,9 +26,11 @@ The graph below shows a consistent pattern: for all three metrics, values are su
 
 ![](images/graph2.png)
 
-This analysis indicates that the intensity of current practices may not be preparing forwards for the level of physical output required during games. This mismatch may be contributing to the team’s overall underperformance on the court, especially in a program where explosiveness has been a defining strength of many successful forwards.
+This analysis indicates that the intensity of current practices may not be preparing forwards for the level of physical output required during games. This mismatch may be contributing to the team’s overall underperformance on the court, especially in a program where explosiveness has been a defining strength of many successful forwards. 
 
 ![](images/graph3.png)
+
+Each forward shows a significant jump in Player Load per Minute from practice to game, but the size of that increase varies by athlete. Athletes G and J exhibit the largest disparities, with game loads more than doubling their practice outputs, while Athlete L’s game load remains relatively closer to their practice level. This leads us to believe that while trends may exist across all forwards, creating individualized practice, training, and recovery plans for players could be beneficial.
 
 ## Conclusion
 
