@@ -1,4 +1,4 @@
-# finalproject-DS2023
+# DS 2023 Final Project - Catapult Group 1
 
 In this project we looked at explosive movement metrics for the University of Virginia Men's Basketball Team for the 2022/23 and 2023/24 seasons. We wanted to explore positional differences between guards, forwards, and centers, with a focus on forwards as they have been most impactful on past successful UVA Men's Basketball teams. We also wanted to explore differences between exertion metrics in practice and in games to see if the way practices are conducted should be altered in any way. We found that the exertion metrics in practice are not currently matching the intensity of games for forwards, a position that has historically been central to the team’s success, which may belimiting development and in-game performance. We believed that emphasizing full-speed, game like scenarios throuhgout practice may lead to better preperation for games. Creating more intense practices while focusing on the development of forwards, while still prioritizing injury management and recovery are likely the best steps for UVA's Men's Basketball program. 
 
