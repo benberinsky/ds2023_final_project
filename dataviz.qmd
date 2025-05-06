@@ -140,49 +140,6 @@ Note: Variables such as jump count cannot be negative
 
 ### Graph 2 Code
 ```{python}
-# Add session type column
-forward_df['Session Type'] = np.where(
-    forward_df['Period'].str.contains(r'\bperiod\b\s*\d*', case=False, na=False),
-    'Game',
-    'Practice'
-)
-
-# Group player and session type
-player_means = forward_df.groupby(['About', 'Session Type'])['Player Load Per Minute'].mean().unstack()
-
-# Sort players by Game values
-player_means = player_means.sort_values(by='Game', ascending=False)
-
-# Plot
-plt.figure(figsize=(10, 6))
-for i, (player, row) in enumerate(player_means.iterrows()):
-    # Plot the line between practice and game values
-    plt.plot([row['Practice'], row['Game']], [i, i], color='gray', linewidth=1.5, zorder=1)
-    # Plot the practice value
-    plt.scatter(row['Practice'], i, color='#fe5a03', label='Practice' if i == 0 else "", zorder=2)
-    # Add data labels for practice values for each player
-    plt.text(row['Practice'], i + 0.2, f"{row['Practice']:.1f}", color='#fe5a03', ha='center', fontsize=8)
-    # Plot the game value
-    plt.scatter(row['Game'], i, color='#2077bd', label='Game' if i == 0 else "", zorder=2)
-    # Add data labels for game values for each player
-    plt.text(row['Game'], i + 0.2, f"{row['Game']:.1f}", color='#2077bd', ha='center', fontsize=8)
-
-# Change yticks to player names
-plt.yticks(range(len(player_means.index)), player_means.index, fontsize=9)
-# Change x-axis limits and tick frequency for more clarity
-plt.xticks(range(5,15, 1))
-# Add a title, legend, remove spines, add a x-axis grid, and show the plot
-plt.suptitle("Player Load/Min for Forwards in Games Far Outpaces Practice Performance", fontsize=18)
-plt.legend()
-plt.gca().spines['top'].set_visible(False)
-plt.gca().spines['right'].set_visible(False)
-plt.grid(True, axis='x', linestyle=':', color='gray', alpha=0.6)
-plt.tight_layout()
-plt.show()
-```
-
-### Graph 3 Code
-```{python}
 plt.rcParams['font.family'] = 'Avenir Next'
 
 # Separate games and practice sessions
@@ -236,8 +193,51 @@ for i, season in enumerate(seasons):
     
 # Add a title and legend
 plt.suptitle("Forward's Explosive Movement Metrics are Falling Behind in Practice", fontsize = 20)
-fig.legend(['Game', 'Practice'], loc='upper center', ncol=2, frameon=False, fontsize=10)
+fig.legend(['Game', 'Practice'], bbox_to_anchor=(0.835, 0.9), loc='upper center', ncol=2, frameon=False, fontsize=10)
+plt.tight_layout()
+plt.subplots_adjust(top=0.8)
+plt.show()
+```
 
+### Graph 3 Code
+```{python}
+# Add session type column
+forward_df['Session Type'] = np.where(
+    forward_df['Period'].str.contains(r'\bperiod\b\s*\d*', case=False, na=False),
+    'Game',
+    'Practice'
+)
+
+# Group player and session type
+player_means = forward_df.groupby(['About', 'Session Type'])['Player Load Per Minute'].mean().unstack()
+
+# Sort players by Game values
+player_means = player_means.sort_values(by='Game', ascending=False)
+
+# Plot
+plt.figure(figsize=(10, 6))
+for i, (player, row) in enumerate(player_means.iterrows()):
+    # Plot the line between practice and game values
+    plt.plot([row['Practice'], row['Game']], [i, i], color='gray', linewidth=1.5, zorder=1)
+    # Plot the practice value
+    plt.scatter(row['Practice'], i, color='#fe5a03', label='Practice' if i == 0 else "", zorder=2)
+    # Add data labels for practice values for each player
+    plt.text(row['Practice'], i + 0.2, f"{row['Practice']:.1f}", color='#fe5a03', ha='center', fontsize=8)
+    # Plot the game value
+    plt.scatter(row['Game'], i, color='#2077bd', label='Game' if i == 0 else "", zorder=2)
+    # Add data labels for game values for each player
+    plt.text(row['Game'], i + 0.2, f"{row['Game']:.1f}", color='#2077bd', ha='center', fontsize=8)
+
+# Change yticks to player names
+plt.yticks(range(len(player_means.index)), player_means.index, fontsize=9)
+# Change x-axis limits and tick frequency for more clarity
+plt.xticks(range(5,15, 1))
+# Add a title, legend, remove spines, add a x-axis grid, and show the plot
+plt.suptitle("Player Load/Min for Forwards in Games Far Outpaces Practice Performance", fontsize=18)
+plt.legend()
+plt.gca().spines['top'].set_visible(False)
+plt.gca().spines['right'].set_visible(False)
+plt.grid(True, axis='x', linestyle=':', color='gray', alpha=0.6)
 plt.tight_layout()
 plt.show()
 ```
