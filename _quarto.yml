@@ -7,7 +7,7 @@ book:
   author: "Tristen Davin, Margaux Reynolds, Benjamin Berinsky, Ben Garozzo"
   date: last-modified
   favicon: "images/uva_logo.jpg"
-  description: "Exploring Positional Workloads from the 2022/23 and 2023/24 Seasons"
+  description: "How Practice Intensity May Be Affecting UVA Basketball’s Performance"
   keyword: "Dataviz, Basketball, UVA, Catapult, Data Science"
   url: "https://benberinsky.github.io/ds2023_finalproject"
   sidebar:
