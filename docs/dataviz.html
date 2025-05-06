@@ -6,7 +6,7 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="description" content="Exploring Positional Workloads from the 2022/23 and 2023/24 Seasons">
+<meta name="description" content="How Practice Intensity May Be Affecting UVA Basketball’s Performance">
 
 <title>Dataviz – Player Load &amp; Explosive Movement Analysis - UVA Men's Basketball</title>
 <style>
@@ -218,7 +218,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <section id="graph-1-code" class="level3">
 <h3 class="anchored" data-anchor-id="graph-1-code">Graph 1 Code</h3>
-<div id="5b1c6074" class="cell" data-execution_count="2">
+<div id="11067800" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Setting font</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>plt.rcParams[<span class="st">'font.family'</span>] <span class="op">=</span> <span class="st">'Avenir Next'</span></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -229,7 +229,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>           ha<span class="op">=</span><span class="st">'center'</span>, fontsize<span class="op">=</span><span class="dv">14</span>, style<span class="op">=</span><span class="st">'italic'</span>, color<span class="op">=</span><span class="st">'#555555'</span>)</span>
 <span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Define metrics and names</span></span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>metrics <span class="op">=</span> [<span class="st">'PlayerLoad Per Minute'</span>, <span class="st">'IMA Accel High(accel&gt;3m/s/s)'</span>, <span class="st">'IMA Jump Count High Band (jumps&gt;40cm)'</span>]</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>metrics <span class="op">=</span> [<span class="st">'PlayerLoad Per Minute'</span>, <span class="st">'IMA Accel High'</span>, <span class="st">'IMA Jump Count High Band'</span>]</span>
 <span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>metric_keys <span class="op">=</span> [<span class="st">'Player Load Per Minute'</span>, <span class="st">'IMA Accel High'</span>, <span class="st">'IMA Jump Count High Band'</span>] </span>
 <span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Setting color to be orange for forwards, gray for all else</span></span>
@@ -316,15 +316,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="dataviz_files/figure-html/cell-3-output-1.png" width="1437" height="489" class="figure-img"></p>
+<p><img src="dataviz_files/figure-html/cell-3-output-1.png" width="1424" height="489" class="figure-img"></p>
 </figure>
 </div>
 </div>
 </div>
+<p>Note: Variables such as jump count cannot be negative</p>
 </section>
 <section id="graph-2-code" class="level3">
 <h3 class="anchored" data-anchor-id="graph-2-code">Graph 2 Code</h3>
-<div id="7944a85c" class="cell" data-execution_count="3">
+<div id="ddac3954" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Add session type column</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>forward_df[<span class="st">'Session Type'</span>] <span class="op">=</span> np.where(</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>    forward_df[<span class="st">'Period'</span>].<span class="bu">str</span>.contains(<span class="vs">r'\bperiod\b\s*\d*'</span>, case<span class="op">=</span><span class="va">False</span>, na<span class="op">=</span><span class="va">False</span>),</span>
@@ -365,7 +366,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb2-38"><a href="#cb2-38" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span>
 <span id="cb2-39"><a href="#cb2-39" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>/var/folders/n6/pgk9bwwd15g8ch5_lb0_0gvm0000gn/T/ipykernel_44815/1289544084.py:2: SettingWithCopyWarning:
+<pre><code>/var/folders/n6/pgk9bwwd15g8ch5_lb0_0gvm0000gn/T/ipykernel_57017/1289544084.py:2: SettingWithCopyWarning:
 
 
 A value is trying to be set on a copy of a slice from a DataFrame.
@@ -385,7 +386,7 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
 </section>
 <section id="graph-3-code" class="level3">
 <h3 class="anchored" data-anchor-id="graph-3-code">Graph 3 Code</h3>
-<div id="3e3427c8" class="cell" data-execution_count="4">
+<div id="33c67464" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>plt.rcParams[<span class="st">'font.family'</span>] <span class="op">=</span> <span class="st">'Avenir Next'</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Separate games and practice sessions</span></span>
